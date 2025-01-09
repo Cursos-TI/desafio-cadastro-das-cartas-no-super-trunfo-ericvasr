@@ -18,10 +18,13 @@ int main() {
     // Sugestão: Utilize a função printf para exibir as informações das cartas cadastradas de forma clara e organizada.
     // Exiba os valores inseridos para cada atributo da cidade, um por linha.
 
-//Criação de  cadastro
+ // Variáveis para o cadastro
     int codigo, num_pontos_turisticos, populacao;
     char nome[50];
     float area, pib;
+
+    // Variáveis para os novos cálculos
+    float densidade_populacional, pib_per_capita;
 
     printf("== Cadastro de Cidades ==\n");
 
@@ -43,6 +46,16 @@ int main() {
     printf("Digite o número de pontos turísticos: \n");
     scanf("%d", &num_pontos_turisticos);
 
+    // Calculo da densidade populacional
+    densidade_populacional = populacao / area;
+
+    // Calculo do PIB per Capita
+    // Ex.: PIB está em bilhões. Se quisermos PIB per capita em 'bilhões/habitante':
+    pib_per_capita = pib / populacao;
+
+    // Se quiser em reais, descomente a linha abaixo e comente a anterior:
+    // pib_per_capita = (pib * 1000000000) / populacao;
+
     printf("\n== Dados da Cidade Cadastrada ==\n");
     printf("Código: %d\n", codigo);
     printf("Nome: %s\n", nome);
@@ -50,6 +63,15 @@ int main() {
     printf("Área: %.2f km²\n", area);
     printf("PIB: %.2f bilhões\n", pib);
     printf("Número de pontos turísticos: %d\n", num_pontos_turisticos);
+
+    // Exibindo as novas propriedades
+    printf("\n== Novas Propriedades Calculadas ==\n");
+    printf("Densidade Populacional: %.2f hab/km²\n", densidade_populacional);
+    // Se estiver usando 'bilhões/habitante':
+    printf("PIB per Capita: %.6f bilhões/habitante\n", pib_per_capita);
+
+    // Caso você opte por exibir em reais, altere para algo como:
+    // printf("PIB per Capita (em R$): %.2f\n", pib_per_capita);
 
     return 0;
 }
